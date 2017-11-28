@@ -1,0 +1,35 @@
+#scroller, #loading, #image, #image > img {
+	position: absolute;
+	top: 0;
+	height: 100vh;
+	width: 100vw;
+	left: 0;
+	object-fit: contain;
+}
+
+#scroller {
+	width: 500vw;
+}
+body {
+	overflow-y: hidden;
+}
+
+#image, #loading {
+	position: fixed;
+}
+
+::-webkit-scrollbar,
+::-moz-horizontal-scrollbar,
+::-moz-scrollbar { 
+    display: none; 
+}
+
+#loading {
+	background: rgba(0, 0, 0, 50%);
+	color: white;
+	font-family: sans-serif;
+	line-height: 100vh;
+	text-align: center;
+	font-size: 8vw;
+	z-index: 10;
+}
