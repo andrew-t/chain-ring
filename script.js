@@ -22,11 +22,14 @@ document.addEventListener('DOMContentLoaded', e => {
 	function update() {
 		const pos = window.scrollX / maxScroll;
 		let frame = Math.floor((1 - pos) * images.length);
+		console.log(frame);
 		if (frame < 0) frame = 0;
 		if (frame >= images.length) frame = images.length - 1;
 		images.forEach((img, f) => {
-			img.style.display = (f == frame)
-				? 'block' : 'none';
+			if (f == frame)
+				img.classList.remove('hidden');
+			else
+				img.classList.add('hidden');
 		});
 	}
 
