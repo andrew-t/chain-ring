@@ -1,5 +1,6 @@
-#scroller, #loading, #image, #image > img {
-	position: absolute;
+#scroller,
+.full,
+.full > img {
 	top: 0;
 	height: 100vh;
 	width: 100vw;
@@ -9,13 +10,18 @@
 
 #scroller {
 	width: 500vw;
+	position: absolute;
 }
 body {
 	overflow-y: hidden;
 }
 
-#image, #loading {
+.full {
 	position: fixed;
+}
+
+#constant-image {
+	z-index: -10;
 }
 
 ::-webkit-scrollbar,
