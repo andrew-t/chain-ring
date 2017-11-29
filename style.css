@@ -1,13 +1,14 @@
 #scroller,
 .full,
-.full > img {
+.full > canvas {
 	top: 0;
 	height: 100vh;
 	width: 100vw;
 	left: 0;
 	position: fixed;
 }
-.full > img {
+
+canvas {
 	object-fit: contain;
 }
 
@@ -19,11 +20,6 @@ body {
 	overflow-y: hidden;
 }
 
-#constant-image {
-	z-index: -10;
-	left: -100vw;
-}
-
 ::-webkit-scrollbar,
 ::-moz-horizontal-scrollbar,
 ::-moz-scrollbar { 
@@ -31,15 +27,11 @@ body {
 }
 
 #loading {
-	background: rgba(0, 0, 0, 50%);
+	background: rgba(0, 0, 0, 0.5);
 	color: white;
 	font-family: sans-serif;
 	line-height: 100vh;
 	text-align: center;
 	font-size: 8vw;
 	z-index: 10;
-}
-
-.hidden {
-	visibility: hidden;
 }

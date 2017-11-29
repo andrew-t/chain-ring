@@ -1,23 +1,27 @@
 document.addEventListener('DOMContentLoaded', e => {
 	const imgContainer = document.getElementById('image'),
-		hiddenImgContainer = document.getElementById('constant-image');
-	const images = [],
-		promises = [];
+		images = [],
+		promises = [],
+		canvas = document.getElementById('canvas'),
+		ctx = canvas.getContext('2d');
 	let allLoaded = false,
 		maxScroll;
 	for (let f = 302; f < 419; ++f) {
-		const img = document.createElement('img');
-		img.setAttribute('src', `img/img0${f}.jpg`);
+		console.log('Loading image ' + f);
+		const img = new Image();
+		img.src = `img/img0${f}.jpg`;
 		images.push(img);
-		imgContainer.appendChild(img);
 		promises.push(new Promise((resolve, reject) => {
-			img.addEventListener('load', e => resolve());
-			img.addEventListener('error', e => reject(e));
+			img.addEventListener('load', e => {
+				console.log('Loaded image ' + f);
+				resolve();
+			});
+			img.addEventListener('error', e => {
+				console.error('Error loading image ' + f, e);
+				reject(e);
+			});
 		}));
 	}
-	// Copy the images into another layer which is
-	// always "visible" so the browser doesn't unload them:
-	hiddenImgContainer.innerHTML = imgContainer.innerHTML;
 
 	function update() {
 		const pos = window.scrollX / maxScroll;
@@ -27,9 +31,7 @@ document.addEventListener('DOMContentLoaded', e => {
 		if (frame >= images.length) frame = images.length - 1;
 		images.forEach((img, f) => {
 			if (f == frame)
-				img.classList.remove('hidden');
-			else
-				img.classList.add('hidden');
+				ctx.drawImage(img, 0, 0);
 		});
 	}
 
