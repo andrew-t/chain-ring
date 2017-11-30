@@ -31,7 +31,7 @@ body {
 }
 
 #loading {
-	background: rgba(0, 0, 0, 50%);
+	background: rgba(0, 0, 0, 0.5);
 	color: white;
 	font-family: sans-serif;
 	line-height: 100vh;
